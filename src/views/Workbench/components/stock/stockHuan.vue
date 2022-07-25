@@ -10,29 +10,42 @@
 </template>
 
 <script>
-// import * as echarts from "echarts";
+import * as echarts from "echarts";
 export default {
   mounted() {
-    // // 基于准备好的dom，初始化echarts实例
-    // let myChart = echarts.init(document.getElementById("echarts_box"));
-    // // 绘制图表
-    // myChart.setOption({
-    //   title: {
-    //     text: "ECharts 入门示例",
-    //   },
-    //   tooltip: {},
-    //   xAxis: {
-    //     data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-    //   },
-    //   yAxis: {},
-    //   series: [
-    //     {
-    //       name: "销量",
-    //       type: "bar",
-    //       data: [5, 20, 36, 10, 10, 20],
-    //     },
-    //   ],
-    // });
+    // 基于准备好的dom，初始化echarts实例
+    let myChart = echarts.init(document.getElementById("echarts_box"));
+    // 绘制图表
+    myChart.setOption({
+      tooltip: {
+        trigger: "item",
+      },
+      series: [
+        {
+          type: "pie",
+          radius: ["37%", "55%"],
+          avoidLabelOverlap: false,
+          label: {
+            show: false,
+            position: "center",
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: "16",
+              fontWeight: "bold",
+            },
+          },
+          labelLine: {
+            show: false,
+          },
+          data: [
+            { value: 300, name: "冻结库存" },
+            { value: 484, name: "可用库存" },
+          ],
+        },
+      ],
+    });
   },
 };
 </script>
@@ -43,7 +56,7 @@ export default {
   font-weight: 700;
 }
 #echarts_box {
-  width: 500px;
-  height: 500px;
+  width: 300px;
+  height: 300px;
 }
 </style>
