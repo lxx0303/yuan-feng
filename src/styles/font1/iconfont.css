@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3243138 */
+  src: url('iconfont.woff2?t=1658675867691') format('woff2'),
+       url('iconfont.woff?t=1658675867691') format('woff'),
+       url('iconfont.ttf?t=1658675867691') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pandiandan:before {
+  content: "\e9fc";
+}
+
+.icon-a-zu1:before {
+  content: "\e62f";
+}
+
+.icon-a-zu2:before {
+  content: "\e632";
+}
+

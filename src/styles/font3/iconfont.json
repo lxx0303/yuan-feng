@@ -1,0 +1,51 @@
+{
+  "id": "3243138",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1727281",
+      "name": "10仓库、仓储-线性",
+      "font_class": "cangkucangchu-xianxing",
+      "unicode": "e88d",
+      "unicode_decimal": 59533
+    },
+    {
+      "icon_id": "2076354",
+      "name": "商务",
+      "font_class": "shangwu",
+      "unicode": "e8b2",
+      "unicode_decimal": 59570
+    },
+    {
+      "icon_id": "4464528",
+      "name": "工作台",
+      "font_class": "gongzuotai",
+      "unicode": "e68c",
+      "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "8117615",
+      "name": "入库管理",
+      "font_class": "rukuguanli",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "8117645",
+      "name": "出库管理",
+      "font_class": "chukuguanli",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "20853337",
+      "name": "基础信息管理",
+      "font_class": "jichuxinxiguanli",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    }
+  ]
+}

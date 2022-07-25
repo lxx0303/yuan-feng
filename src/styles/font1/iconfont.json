@@ -1,0 +1,30 @@
+{
+  "id": "3243138",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "23060485",
+      "name": "盘点单",
+      "font_class": "pandiandan",
+      "unicode": "e9fc",
+      "unicode_decimal": 59900
+    },
+    {
+      "icon_id": "26694830",
+      "name": "入库单",
+      "font_class": "a-zu1",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "26698602",
+      "name": "出库单",
+      "font_class": "a-zu2",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    }
+  ]
+}

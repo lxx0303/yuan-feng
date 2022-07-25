@@ -1,0 +1,44 @@
+{
+  "id": "3243138",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1014860",
+      "name": "是否允许未完成盘点任务开单",
+      "font_class": "order1",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "1236928",
+      "name": "上架",
+      "font_class": "iconfontzhizuobiaozhunbduan31",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    },
+    {
+      "icon_id": "2545174",
+      "name": "首页-拣货",
+      "font_class": "jianhuo",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "2811146",
+      "name": "待收货",
+      "font_class": "daishouhuo",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "15628571",
+      "name": "交接班管理2",
+      "font_class": "jiaojiebanguanli2",
+      "unicode": "e6ad",
+      "unicode_decimal": 59053
+    }
+  ]
+}
