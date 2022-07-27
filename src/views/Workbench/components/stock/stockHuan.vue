@@ -37,7 +37,7 @@ export default {
           tooltip: {
             trigger: "item",
           },
-          color: ["#ffaa00", "#e4dbda"],
+          color: ["#e4dbda", "#ffaa00"],
           series: [
             {
               type: "pie",

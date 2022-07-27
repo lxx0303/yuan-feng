@@ -15,6 +15,11 @@ module.exports = defineConfig({
           target: "http://www-wms-java.itheima.net", // 跨域请求的地址
           changeOrigin: true,
         },
+        "/api": {
+          // 需要代理到线上服务器
+          target: "http://www-wms-java.itheima.net", // 跨域请求的地址
+          changeOrigin: true,
+        },
       },
     },
     resolve: {

@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const request = axios.create({
+const request1 = axios.create({
   // baseURL: `http://www-wms-java.itheima.net `, // 基础路径
   // baseURL: process.env["VUE_APP_BASE_API"],
-  baseURL: "/ips",
+  baseURL: "/api",
   timeout: 8000,
   headers: {},
 });
 // const request = (config) => {
 // 请求拦截
-request.interceptors.request.use(
+request1.interceptors.request.use(
   (config) => {
     const token = "11111";
     // 如果有一些接口需要认证才可以访问，就在这统一设置
@@ -22,6 +22,6 @@ request.interceptors.request.use(
 );
 
 // 响应拦截
-request.interceptors.response.use();
+request1.interceptors.response.use();
 
-export default request;
+export default request1;
