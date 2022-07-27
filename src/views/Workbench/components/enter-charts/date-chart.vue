@@ -3,53 +3,95 @@
 </template>
 
 <script>
-import * as echarts from "echarts";
+import { getTiaoChart } from "@/api/home";
 
+import * as echarts from "echarts";
 export default {
-  mounted() {
-    // 基于准备好的dom，初始化echarts实例
-    let myChart = echarts.init(document.getElementById("date-chart"));
-    // 绘制图表
-    myChart.setOption({
-      tooltip: {
-        trigger: "axis",
-        axisPointer: {
-          type: "shadow",
-        },
+  props: {
+    dimension: {
+      type: String,
+      default: "w",
+    },
+  },
+  data() {
+    return {
+      tiaoChart: [],
+      dimensionStr: "",
+    };
+  },
+  watch: {
+    dimension: {
+      handler(val) {
+        console.log();
+        this.dimensionStr = val;
+        this.onTiaoChart();
       },
-      grid: {
-        left: "3%",
-        right: "4%",
-        bottom: "3%",
-        containLabel: true,
-      },
-      xAxis: [
-        {
-          type: "category",
-          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-          axisTick: {
-            alignWithLabel: true,
+      immediate: true,
+    },
+  },
+  methods: {
+    async onTiaoChart() {
+      const { data } = await getTiaoChart({ dimension: this.dimensionStr });
+      this.tiaoChart = data.data;
+      this.initChart();
+      console.log(this.tiaoChart, "条形");
+    },
+    initChart() {
+      this.$nextTick(() => {
+        // 基于准备好的dom，初始化echarts实例
+        let myChart = echarts.init(document.getElementById("date-chart"));
+        // 绘制图表
+        myChart.setOption({
+          tooltip: {
+            trigger: "axis",
+            axisPointer: {
+              type: "shadow",
+            },
           },
-        },
-      ],
-      yAxis: [
-        {
-          type: "value",
-        },
-      ],
-      series: [
-        {
-          name: "Direct",
-          type: "bar",
-          barWidth: "60%",
-          itemStyle: {
-            color: "transparent",
-            // shawdowColor: "#999",
+          grid: {
+            left: "3%",
+            right: "4%",
+            bottom: "3%",
+            containLabel: true,
           },
-          data: [0, 0.2, 0.4, 0.6, 0.8, 1],
-        },
-      ],
-    });
+          xAxis: [
+            {
+              type: "category",
+              data: this.tiaoChart.x,
+              axisTick: {
+                alignWithLabel: true,
+              },
+            },
+          ],
+          yAxis: [
+            {
+              type: "value",
+            },
+          ],
+          series: [
+            {
+              name: "入库",
+              type: "bar",
+              barWidth: "35%",
+              barGap: "0%",
+              itemStyle: {
+                color: "#ff7100",
+              },
+              data: this.tiaoChart.data[0].data,
+            },
+            {
+              name: "出库",
+              type: "bar",
+              barWidth: "35%",
+              itemStyle: {
+                color: "#ffb200",
+              },
+              data: this.tiaoChart.data[1].data,
+            },
+          ],
+        });
+      });
+    },
   },
 };
 </script>

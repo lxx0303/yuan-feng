@@ -1,5 +1,5 @@
 <template>
-  <div>全年</div>
+  <div>出库管理</div>
 </template>
 
 <script>

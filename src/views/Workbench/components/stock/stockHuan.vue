@@ -10,42 +10,62 @@
 </template>
 
 <script>
+import { getHuanChart } from "@/api/home";
 import * as echarts from "echarts";
 export default {
-  mounted() {
-    // 基于准备好的dom，初始化echarts实例
-    let myChart = echarts.init(document.getElementById("echarts_box"));
-    // 绘制图表
-    myChart.setOption({
-      tooltip: {
-        trigger: "item",
-      },
-      series: [
-        {
-          type: "pie",
-          radius: ["37%", "55%"],
-          avoidLabelOverlap: false,
-          label: {
-            show: false,
-            position: "center",
+  data() {
+    return {
+      stockHuan: [],
+    };
+  },
+
+  created() {
+    this.onHuanXing();
+  },
+  methods: {
+    async onHuanXing() {
+      const { data } = await getHuanChart();
+      this.stockHuan = data.data;
+      this.onInitEcharts();
+    },
+    onInitEcharts() {
+      this.$nextTick(() => {
+        // 基于准备好的dom，初始化echarts实例
+        let myChart = echarts.init(document.getElementById("echarts_box"));
+        // 绘制图表
+        myChart.setOption({
+          tooltip: {
+            trigger: "item",
           },
-          emphasis: {
-            label: {
-              show: true,
-              fontSize: "16",
-              fontWeight: "bold",
+          color: ["#ffaa00", "#e4dbda"],
+          series: [
+            {
+              type: "pie",
+              radius: ["37%", "55%"],
+              avoidLabelOverlap: false,
+              label: {
+                show: false,
+                position: "center",
+              },
+              emphasis: {
+                label: {
+                  show: true,
+                  fontSize: "16",
+                  fontWeight: "bold",
+                },
+              },
+              labelLine: {
+                show: false,
+              },
+              // itemStyle: {
+              //   color: "#ffb200",
+              // },
+              data: this.stockHuan,
             },
-          },
-          labelLine: {
-            show: false,
-          },
-          data: [
-            { value: 300, name: "冻结库存" },
-            { value: 484, name: "可用库存" },
           ],
-        },
-      ],
-    });
+        });
+      });
+    },
   },
 };
 </script>

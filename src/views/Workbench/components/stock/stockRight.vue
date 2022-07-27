@@ -2,7 +2,7 @@
   <div>
     <el-card>
       <div class="header-msg">
-        <span>库存使用情况</span>
+        <span>库区使用情况</span>
       </div>
       <div id="echarts-right"></div>
     </el-card>
@@ -10,8 +10,12 @@
 </template>
 
 <script>
+import { getBinChart } from "@/api/home";
 import * as echarts from "echarts";
 export default {
+  data() {
+    return {};
+  },
   mounted() {
     // 基于准备好的dom，初始化echarts实例
     let myChart = echarts.init(document.getElementById("echarts-right"));
@@ -27,6 +31,7 @@ export default {
         orient: "vertical",
         left: "right",
       },
+      color: ["#0076ff", "#52d4f3", "#5d7092", "#ffb200", "#ff7100"],
       series: [
         {
           type: "pie",
@@ -51,6 +56,15 @@ export default {
         },
       ],
     });
+  },
+  created() {
+    this.onBinchart();
+  },
+  methods: {
+    async onBinchart() {
+      const data = await getBinChart();
+      console.log(data, "饼图");
+    },
   },
 };
 </script>

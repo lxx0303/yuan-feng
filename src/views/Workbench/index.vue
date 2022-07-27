@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- 顶部 -->
+    <div class="header">
+      <Header></Header>
+    </div>
     <div class="work_top">
       <div class="work_left">
         <div class="work_header">
@@ -94,9 +98,10 @@ import TaskNav from "@/views/Workbench/components/taskNav.vue";
 import EnterInfo from "@/views/Workbench/components/enterInfo.vue";
 import StockHuan from "@/views/Workbench/components/stock/stockHuan.vue";
 import StockRight from "@/views/Workbench/components/stock/stockRight.vue";
+import Header from "@/compoents/Header.vue";
 
 export default {
-  components: { TodoInfo, TaskNav, EnterInfo, StockRight, StockHuan },
+  components: { TodoInfo, TaskNav, EnterInfo, StockRight, StockHuan, Header },
 };
 </script>
 

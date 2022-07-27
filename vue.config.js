@@ -9,6 +9,13 @@ module.exports = defineConfig({
       open: true,
       port: 8888,
       host: "localhost",
+      proxy: {
+        "/ips": {
+          // 需要代理到线上服务器
+          target: "http://www-wms-java.itheima.net", // 跨域请求的地址
+          changeOrigin: true,
+        },
+      },
     },
     resolve: {
       alias: {

@@ -4,20 +4,29 @@
       <div class="header-info">
         <span>入库/出库信息</span>
         <el-button-group class="btns-bgc">
-          <el-button type="primary" size="middle">本周</el-button>
-          <el-button type="primary" size="middle">本月</el-button>
-          <el-button type="primary" size="middle">全年</el-button>
+          <el-button
+            :type="dimension == 'w' ? 'primary' : 'info'"
+            size="middle"
+            @click="dimension = 'w'"
+            >本周</el-button
+          >
+          <el-button
+            :type="dimension == 'e' ? 'primary' : 'info'"
+            size="middle"
+            @click="dimension = 'e'"
+            >本月</el-button
+          >
+          <el-button
+            :type="dimension == 'c' ? 'primary' : 'info'"
+            size="middle"
+            @click="dimension = 'c'"
+            >全年</el-button
+          >
         </el-button-group>
       </div>
       <!-- 图标 -->
       <div v-if="(checked = true)">
-        <DateChart></DateChart>
-      </div>
-      <div v-else-if="(checked = false)">
-        <MonthChart></MonthChart>
-      </div>
-      <div v-else>
-        <YearChart></YearChart>
+        <DateChart :dimension="dimension"></DateChart>
       </div>
     </el-card>
   </div>
@@ -25,21 +34,16 @@
 
 <script>
 import DateChart from "@/views/Workbench/components/enter-charts/date-chart.vue";
-import MonthChart from "@/views/Workbench/components/enter-charts/month-chart.vue";
-import YearChart from "@/views/Workbench/components/enter-charts/year-chart.vue";
 
 export default {
-  components: { DateChart, MonthChart, YearChart },
+  components: { DateChart },
   data() {
     return {
       checked: false,
+      dimension: "w",
     };
   },
-  methods: {
-    // clickBtn() {
-    //   this.checked = true;
-    // },
-  },
+  methods: {},
 };
 </script>
 
@@ -50,13 +54,14 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.el-button--primary {
+.el-button--info {
   background-color: #fff;
   color: #333;
   border-color: #eee;
 }
-.el-button--primary:focus {
+.el-button--primary {
   background-color: #ffb200;
   color: #fff;
+  border-color: #ffb200;
 }
 </style>

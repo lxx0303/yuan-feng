@@ -4,22 +4,22 @@
       <span class="header-msg">待办信息</span>
       <div class="fcc">
         <!-- 一 -->
-        <div class="all f1">
+        <div class="all f1" v-for="(item, index) in todoInofList" :key="index">
           <div class="first-box fsc">
-            <div class="icon-msg first">
-              <i class="iconfont icon-a-zu1"></i>
+            <div :class="`icon-msg ${onBgc(item.name)}`">
+              <i :class="`iconfont ${onIcon(item.name)}`"></i>
             </div>
-            <span>入库单</span>
+            <span>{{ item.name }}</span>
           </div>
           <div class="note-bottom">
             <span class="add">新增</span>
-            <span class="number">4</span>
+            <span class="number">{{ item.value1 }}</span>
             <span class="add">待审核</span>
-            <span class="number number1">4</span>
+            <span class="number number1">{{ item.value2 }}</span>
           </div>
         </div>
         <!-- 二 -->
-        <div class="all f1">
+        <!-- <div class="all f1">
           <div class="first-box fsc">
             <div class="icon-msg second">
               <i class="iconfont icon-a-zu2"></i>
@@ -32,9 +32,9 @@
             <span class="add">待审核</span>
             <span class="number number2">1</span>
           </div>
-        </div>
+        </div> -->
         <!-- 三 -->
-        <div class="all f1">
+        <!-- <div class="all f1">
           <div class="first-box fsc">
             <div class="icon-msg thrid">
               <i class="iconfont icon-pandiandan"></i>
@@ -47,29 +47,56 @@
             <span class="add">待审核</span>
             <span class="number number3">0</span>
           </div>
-        </div>
+        </div> -->
       </div>
     </el-card>
   </div>
 </template>
 
 <script>
-// import { getTodoInfo } from "@/api/home";
+import { getTodoInfo } from "@/api/home";
 export default {
   data() {
     return {
       // 代办信息参数
-      data: "1",
+      data: "",
+      todoInofList: [],
+      todoColor: [],
     };
   },
   created() {
-    // this.onTodoInfo();
+    this.onTodoInfo();
   },
   methods: {
-    // async onTodoInfo() {
-    //   const res = await getTodoInfo({ data: this.data });
-    //   console.log(res);
-    // },
+    async onTodoInfo() {
+      const { data } = await getTodoInfo();
+      console.log(data, "99999999999999");
+      this.todoInofList = data.data;
+    },
+    onBgc(name) {
+      switch (name) {
+        case "入库单":
+          return "first";
+        case "出库单":
+          return "second";
+        case "盘点单":
+          return "thrid";
+        default:
+          break;
+      }
+    },
+    onIcon(name) {
+      switch (name) {
+        case "入库单":
+          return "icon-a-zu1";
+        case "出库单":
+          return "icon-a-zu2";
+        case "盘点单":
+          return "icon-pandiandan";
+        default:
+          break;
+      }
+    },
   },
 };
 </script>
