@@ -36,16 +36,14 @@ const routes = [
             path: "/kuguanli",
             name: "kuguanli",
             component: () => import("@/views/baseInfo"),
-            children: [
-              // {
-              //   path: "/editWarehouse",
-              //   name: "editWarehouse",
-              //   component: () =>
-              //     import("@/views/baseInfo/components/editWareHose.vue"),
-              // },
-            ],
           },
         ],
+      },
+      // 仓库管理-编辑
+      {
+        path: "/editWarehouse",
+        name: "editWarehouse",
+        component: () => import("@/views/baseInfo/components/editWareHose.vue"),
       },
       // 商务管理
       {

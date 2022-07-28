@@ -53,7 +53,13 @@
       <el-card>
         <!-- 新增按钮 -->
         <div>
-          <el-button class="ckBtn" size="medium" type="success" round>
+          <el-button
+            @click="editAddClick"
+            class="ckBtn"
+            size="medium"
+            type="success"
+            round
+          >
             新增仓库
           </el-button>
         </div>
@@ -98,7 +104,13 @@
             </el-table-column>
             <el-table-column fixed="right" label="操作" width="200">
               <template slot-scope="scope">
-                <el-button type="text" size="small">编辑</el-button>
+                <el-button
+                  type="text"
+                  size="small"
+                  @click.native="editAddClick(scope.row.id)"
+                  :currentId="currentId"
+                  >编辑</el-button
+                >
                 <el-button
                   type="text"
                   size="small"
@@ -112,7 +124,6 @@
             </el-table-column>
           </el-table>
         </div>
-
         <!-- 分页 -->
         <div class="block">
           <el-pagination
@@ -177,6 +188,9 @@ export default {
       inputName: "",
       // 搜索-仓库编号
       inputNumber: "",
+
+      // 编辑的当前项的id
+      currentId: "",
     };
   },
   created() {
@@ -193,6 +207,7 @@ export default {
       this.currentPage4 = val;
       this.onWarehoseInfo();
     },
+    // 列表数据
     async onWarehoseInfo() {
       const { data } = await getWarehouseInfo({
         current: this.currentPage4,
@@ -200,6 +215,7 @@ export default {
         status: this.currentStuts,
         name: this.inputName,
         code: this.inputNumber,
+        id: this.currentId,
       });
       // console.log(data);
       this.WarehoseInfo = data.data.records;
@@ -244,6 +260,14 @@ export default {
         message: "演示系统，不支持此操作",
         type: "warning",
       });
+    },
+    // 编辑
+    editAddClick(id) {
+      this.$router.push({
+        name: "editWarehouse",
+      });
+      this.currentId = id;
+      this.onWarehoseInfo();
     },
   },
 };
