@@ -26,6 +26,7 @@
                 v-model="currentStuts"
                 placeholder="请输入"
                 @change="changeClick"
+                style="width: 300px"
               >
                 <el-option
                   v-for="item in options"
@@ -54,7 +55,7 @@
         <!-- 新增按钮 -->
         <div>
           <el-button
-            @click="editAddClick"
+            @click="addClick"
             class="ckBtn"
             size="medium"
             type="success"
@@ -107,15 +108,14 @@
                 <el-button
                   type="text"
                   size="small"
-                  @click.native="editAddClick(scope.row.id)"
-                  :currentId="currentId"
+                  @click="editClick(scope.row.id)"
                   >编辑</el-button
                 >
                 <el-button
                   type="text"
                   size="small"
-                  @click="open(scope.row.name)"
-                  >启用</el-button
+                  @click="open(scope.row.name, scope.row.id, scope.row.status)"
+                  >{{ scope.row.status == 0 ? "启用" : "停用" }}</el-button
                 >
                 <el-button type="text" size="small" @click="delClick"
                   >删除</el-button
@@ -144,7 +144,7 @@
 
 <script>
 import Header from "@/compoents/Header.vue";
-import { getWarehouseInfo } from "@/api/baseInfo";
+import { getWarehouseInfo, getSubmitInfo } from "@/api/baseInfo";
 export default {
   components: { Header },
   data() {
@@ -188,9 +188,6 @@ export default {
       inputName: "",
       // 搜索-仓库编号
       inputNumber: "",
-
-      // 编辑的当前项的id
-      currentId: "",
     };
   },
   created() {
@@ -223,16 +220,21 @@ export default {
       console.log(this.WarehoseInfo, "仓库管理");
     },
     // 弹窗
-    open(name) {
+    open(name, id, status) {
       this.$confirm(`确定要启用：${name}吗？`, "确认启用", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
       })
-        .then(() => {
+        .then(async () => {
+          await getSubmitInfo({
+            id,
+            status: status == 0 ? 1 : 0,
+          });
           this.$message({
             type: "success",
             message: "启用成功!",
           });
+          this.onWarehoseInfo();
         })
         .catch(() => {
           this.$message({
@@ -262,12 +264,19 @@ export default {
       });
     },
     // 编辑
-    editAddClick(id) {
+    editClick(id) {
+      this.$router.push({
+        name: "editWarehouse",
+        query: {
+          id,
+        },
+      });
+    },
+    // 新增
+    addClick() {
       this.$router.push({
         name: "editWarehouse",
       });
-      this.currentId = id;
-      this.onWarehoseInfo();
     },
   },
 };
