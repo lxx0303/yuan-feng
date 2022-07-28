@@ -35,7 +35,12 @@ const routes = [
           {
             path: "/kuguanli",
             name: "kuguanli",
-            component: () => import("@/views/baseInfo"),
+            component: () => import("@/views/baseInfo/cangkuguanli"),
+          },
+          {
+            path: "/quguanli",
+            name: "quguanli",
+            component: () => import("@/views/baseInfo/kuquguanli"),
           },
         ],
       },

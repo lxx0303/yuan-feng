@@ -30,7 +30,7 @@
               <el-menu-item index="1-1" @click="onCkguanli"
                 >仓库管理</el-menu-item
               >
-              <el-menu-item index="1-2">库区管理</el-menu-item>
+              <el-menu-item index="1-2" @click="onKuqu">库区管理</el-menu-item>
               <el-menu-item index="1-3">库位管理</el-menu-item>
               <el-menu-item index="1-4">库位视图</el-menu-item>
               <el-menu-item index="1-5">货品管理</el-menu-item>
@@ -132,6 +132,11 @@ export default {
     onChuku() {
       this.$router.push({
         name: "chuku",
+      });
+    },
+    onKuqu() {
+      this.$router.push({
+        name: "quguanli",
       });
     },
   },
