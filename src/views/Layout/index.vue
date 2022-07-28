@@ -7,6 +7,7 @@
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
+          router
         >
           <div class="main_logo ml20 mt30 mb30">
             <img
@@ -14,7 +15,7 @@
               alt=""
             />
           </div>
-          <el-menu-item index="1" @click="onWork">
+          <el-menu-item index="/todoinfo">
             <i class="el-icon-menu"></i>
             <span slot="title">工作台</span>
           </el-menu-item>
@@ -23,14 +24,12 @@
             <!-- 第一级 -->
             <template slot="title">
               <i class="iconfont icon-jichuxinxiguanli"></i>
-              <span slot="title" @click="onCkguanli">基础信息管理</span>
+              <span slot="title">基础信息管理</span>
             </template>
             <!-- 第二级 -->
             <el-menu-item-group>
-              <el-menu-item index="1-1" @click="onCkguanli"
-                >仓库管理</el-menu-item
-              >
-              <el-menu-item index="1-2" @click="onKuqu">库区管理</el-menu-item>
+              <el-menu-item index="/kuguanli">仓库管理</el-menu-item>
+              <el-menu-item index="/quguanli">库区管理</el-menu-item>
               <el-menu-item index="1-3">库位管理</el-menu-item>
               <el-menu-item index="1-4">库位视图</el-menu-item>
               <el-menu-item index="1-5">货品管理</el-menu-item>
@@ -41,10 +40,10 @@
           <el-submenu index="3">
             <template slot="title">
               <i class="iconfont icon-shangwu"></i>
-              <span slot="title" @click="onShangwu">商务管理</span>
+              <span slot="title">商务管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">货主管理</el-menu-item>
+              <el-menu-item index="/shangwu">货主管理</el-menu-item>
               <el-menu-item index="1-2">承接商管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -52,10 +51,10 @@
           <el-submenu index="4">
             <template slot="title">
               <i class="iconfont icon-cangkucangchu-xianxing"></i>
-              <span slot="title" @click="onKunei">库内管理</span>
+              <span slot="title">库内管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">盘点单</el-menu-item>
+              <el-menu-item index="/kunei">盘点单</el-menu-item>
               <el-menu-item index="1-2">盘点任务</el-menu-item>
               <el-menu-item index="1-3">库存损益</el-menu-item>
               <el-menu-item index="1-4">实时库存</el-menu-item>
@@ -65,10 +64,10 @@
           <el-submenu index="5">
             <template slot="title">
               <i class="iconfont icon-rukuguanli"></i>
-              <span slot="title" @click="onRuku">入库管理</span>
+              <span slot="title">入库管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">入库单</el-menu-item>
+              <el-menu-item index="/ruku">入库单</el-menu-item>
               <el-menu-item index="1-2">收获任务</el-menu-item>
               <el-menu-item index="1-3">上架任务</el-menu-item>
             </el-menu-item-group>
@@ -77,10 +76,10 @@
           <el-submenu index="6">
             <template slot="title">
               <i class="iconfont icon-chukuguanli"></i>
-              <span slot="title" @click="onChuku">出库管理</span>
+              <span slot="title">出库管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">出货单</el-menu-item>
+              <el-menu-item index="/chuku">出货单</el-menu-item>
               <el-menu-item index="1-2">拣货任务</el-menu-item>
               <el-menu-item index="1-3">交接任务</el-menu-item>
             </el-menu-item-group>
@@ -105,39 +104,6 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
-    },
-    onWork() {
-      this.$router.push({ name: "todoInfo" });
-    },
-    onCkguanli() {
-      this.$router.push({
-        name: "kuguanli",
-      });
-    },
-    onShangwu() {
-      this.$router.push({
-        name: "shangwu",
-      });
-    },
-    onKunei() {
-      this.$router.push({
-        name: "kunei",
-      });
-    },
-    onRuku() {
-      this.$router.push({
-        name: "ruku",
-      });
-    },
-    onChuku() {
-      this.$router.push({
-        name: "chuku",
-      });
-    },
-    onKuqu() {
-      this.$router.push({
-        name: "quguanli",
-      });
     },
   },
 };
