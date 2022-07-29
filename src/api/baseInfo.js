@@ -18,7 +18,7 @@ export function getUpdateInfo(params) {
     method: "get",
   });
 }
-// 提交
+// 修改仓库状态
 export function getSubmitInfo(data) {
   return request({
     url: "/warehouse",

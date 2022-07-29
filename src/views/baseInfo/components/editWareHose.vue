@@ -39,7 +39,7 @@
       <el-row style="margin-top: 40px" type="flex">
         <el-col>
           <div class="grid-content">
-            <div class="text">省市区</div>
+            <div class="text">省/市/区</div>
             <el-input
               v-model="currentList.location"
               placeholder="请输入"

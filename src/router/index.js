@@ -50,6 +50,12 @@ const routes = [
         name: "editWarehouse",
         component: () => import("@/views/baseInfo/components/editWareHose.vue"),
       },
+      // 库区管理-编辑
+      {
+        path: "/kuquedit",
+        name: "kuquedit",
+        component: () => import("@/views/baseInfo/components/kuqu-edit.vue"),
+      },
       // 商务管理
       {
         path: "/shangwu",
