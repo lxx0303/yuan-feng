@@ -20,15 +20,15 @@
         </el-form-item>
         <el-form-item label="所属仓库" prop="warehouseName">
           <el-select
-            v-model="suoshuCangku.name"
+            v-model="ruleForm.warehouseId"
             placeholder="请选择所属仓库"
             style="width: 270px"
           >
             <el-option
               v-for="item in suoshuCngkuPtion"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -146,6 +146,7 @@ export default {
         useType: "",
         personName: "",
         phone: "",
+        warehouseId: "",
       },
       rules: {
         code: [{ required: true, message: "请输入库区编号", trigger: "blur" }],
@@ -179,13 +180,8 @@ export default {
       // 仓库状态
       currentStatus: 1,
       // 所属仓库
-      suoshuCangku: {},
-      suoshuCngkuPtion: [
-        {
-          value: "",
-          label: "",
-        },
-      ],
+      // suoshuCangku: {},
+      suoshuCngkuPtion: [],
 
       // 温度类型
       temperatureOptions: [
@@ -257,7 +253,7 @@ export default {
       const { data } = await updateCangku({
         status: this.currentStatus,
       });
-      this.suoshuCangku = data.data;
+      this.suoshuCngkuPtion = data.data;
       console.log(data);
     },
 
