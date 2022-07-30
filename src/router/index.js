@@ -42,6 +42,11 @@ const routes = [
             name: "quguanli",
             component: () => import("@/views/baseInfo/kuquguanli"),
           },
+          {
+            path: "/kuweiguanli",
+            name: "kuweiguanli",
+            component: () => import("@/views/baseInfo/kuweiguanli"),
+          },
         ],
       },
       // 仓库管理-编辑
@@ -56,6 +61,13 @@ const routes = [
         name: "kuquedit",
         component: () => import("@/views/baseInfo/components/kuqu-edit.vue"),
       },
+      // 库位管理-编辑
+      {
+        path: "/kuweiedit",
+        name: "kuweiedit",
+        component: () => import("@/views/baseInfo/components/kuwei-edit.vue"),
+      },
+
       // 商务管理
       {
         path: "/shangwu",
