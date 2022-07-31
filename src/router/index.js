@@ -42,6 +42,11 @@ const routes = [
             name: "quguanli",
             component: () => import("@/views/baseInfo/kuquguanli"),
           },
+          {
+            path: "/kuweishitu",
+            name: "kuweishitu",
+            component: () => import("@/views/baseInfo/kuweishitu"),
+          },
         ],
       },
       // 仓库管理-编辑

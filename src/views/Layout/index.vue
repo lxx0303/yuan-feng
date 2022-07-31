@@ -31,7 +31,7 @@
               <el-menu-item index="/kuguanli">仓库管理</el-menu-item>
               <el-menu-item index="/quguanli">库区管理</el-menu-item>
               <el-menu-item index="1-3">库位管理</el-menu-item>
-              <el-menu-item index="1-4">库位视图</el-menu-item>
+              <el-menu-item index="/kuweishitu">库位视图</el-menu-item>
               <el-menu-item index="1-5">货品管理</el-menu-item>
               <el-menu-item index="1-6">货品类型管理</el-menu-item>
             </el-menu-item-group>
