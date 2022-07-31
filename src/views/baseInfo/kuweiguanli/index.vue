@@ -9,19 +9,19 @@
         <el-row :gutter="20">
           <el-col :span="6">
             <div class="grid-content">
-              <div class="text">仓库编号</div>
+              <div class="text">库区名称</div>
               <el-input v-model="inputNumber" placeholder="请输入"> </el-input>
             </div>
           </el-col>
           <el-col :span="6">
             <div class="grid-content">
-              <div class="text">仓库名称</div>
+              <div class="text">库位名称</div>
               <el-input v-model="inputName" placeholder="请输入"> </el-input>
             </div>
           </el-col>
           <el-col :span="6">
             <div class="grid-content">
-              <div class="text">仓库状态</div>
+              <div class="text">库位状态</div>
               <el-select
                 v-model="currentStatus"
                 placeholder="请输入"
@@ -54,7 +54,13 @@
     <el-card style="margin-top: 20px">
       <!-- 新增按钮 -->
       <div>
-        <el-button class="ckBtn" size="medium" type="success" round>
+        <el-button
+          class="ckBtn"
+          size="medium"
+          type="success"
+          round
+          @click="addClick"
+        >
           新增仓库
         </el-button>
         <el-button class="huise" size="medium" round> 下载库区模板 </el-button>
@@ -99,7 +105,7 @@
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="160">
           <template v-slot="{ row }">
-            <el-button type="text" size="small" @click="kuweiEdit"
+            <el-button type="text" size="small" @click="kuweiEdit(row.id)"
               >编辑</el-button
             >
             <el-button
@@ -189,11 +195,14 @@ export default {
           label: "占用",
         },
       ],
-      // 选择当前状态
+      // 当前状态
       currentStatus: "",
-      // 搜索-仓库名称
+
+      // searchStatus:""
+
+      // 搜索-库位名称
       inputName: "",
-      // 搜索-仓库编号
+      // 搜索-库区编号
       inputNumber: "",
     };
   },
@@ -218,8 +227,9 @@ export default {
         size: this.pageSize,
         current: this.currentPage,
         name: this.inputName,
-        code: this.inputNumber,
+        areaName: this.inputNumber,
         useStatus: this.currentStatus,
+        // status: this.searchStatus,
       });
       console.log(this.kuWeiData);
       this.kuWeiData = data.data.records;
@@ -260,17 +270,28 @@ export default {
 
     // 搜索-修改状态
     changeStatusClick(val) {
+      // this.searchStatus = val;
       this.currentStatus = val;
     },
     // 重置
     resetClick() {
       this.inputName = "";
       this.inputNumber = "";
+      // this.searchStatus=""
       this.currentStatus = "";
       this.onKuweiList();
     },
     // 编辑
-    kuweiEdit() {
+    kuweiEdit(id) {
+      this.$router.push({
+        name: "kuweiedit",
+        query: {
+          id,
+        },
+      });
+    },
+    // 新增
+    addClick() {
       this.$router.push({
         name: "kuweiedit",
       });
