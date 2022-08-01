@@ -1,5 +1,5 @@
 <template>
-  <div>出库管理</div>
+  <div><router-view></router-view></div>
 </template>
 
 <script>
