@@ -32,7 +32,9 @@
           </el-input>
           <div>
             <ul class="infinite-list">
-              <li class="btn-list">出库缓存区</li>
+              <!-- <li class="btn-list" v-for="item in showList" :key="item">
+                {{ item.areaName }}
+              </li> -->
               <li class="btn-list">入库缓存区</li>
               <li class="btn-list">冻结区</li>
               <li class="btn-list">存储区</li>
@@ -75,6 +77,8 @@
 
 <script>
 import Header from "@/compoents/Header.vue";
+import { getShowInfo } from "@/api/kuweishitu";
+
 export default {
   components: { Header },
   data() {
@@ -82,10 +86,21 @@ export default {
       form: {
         region: "",
       },
+      showList: [],
     };
   },
-  computed: {},
-  methods: {},
+  created() {
+    this.onShowInfo();
+  },
+  methods: {
+    // 页面数据
+    async onShowInfo() {
+      const { data } = await getShowInfo();
+      console.log(data);
+      this.showList = data.data;
+      console.log(this.showList);
+    },
+  },
 };
 </script>
 
