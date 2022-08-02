@@ -100,6 +100,13 @@ const routes = [
         name: "chuku",
         component: () => import("@/views/chuku"),
         redirect: "",
+        children: [
+          {
+            path: "/handovertask",
+            name: "handovertask",
+            component: () => import("@/views/chuku/handeover-task"),
+          },
+        ],
       },
     ],
   },

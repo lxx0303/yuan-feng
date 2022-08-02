@@ -81,7 +81,7 @@
             <el-menu-item-group>
               <el-menu-item index="/chuku">出货单</el-menu-item>
               <el-menu-item index="1-2">拣货任务</el-menu-item>
-              <el-menu-item index="1-3">交接任务</el-menu-item>
+              <el-menu-item index="/handovertask">交接任务</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
