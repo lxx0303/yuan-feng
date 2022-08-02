@@ -77,6 +77,13 @@ const routes = [
         name: "kuweiedit",
         component: () => import("@/views/baseInfo/components/kuwei-edit.vue"),
       },
+      // 货品管理-编辑
+      {
+        path: "/goodsedit",
+        name: "goodsedit",
+        component: () =>
+          import("@/views/baseInfo/components/goodsManage-edit.vue"),
+      },
 
       // 商务管理
       {
