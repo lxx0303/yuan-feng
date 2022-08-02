@@ -32,7 +32,7 @@
               <el-menu-item index="/quguanli">库区管理</el-menu-item>
               <el-menu-item index="/kuweiguanli">库位管理</el-menu-item>
               <el-menu-item index="/kuweishitu">库位视图</el-menu-item>
-              <el-menu-item index="1-5">货品管理</el-menu-item>
+              <el-menu-item index="/goodsmanage">货品管理</el-menu-item>
               <el-menu-item index="1-6">货品类型管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
