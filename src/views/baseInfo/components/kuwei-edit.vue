@@ -220,6 +220,7 @@ import {
   changeKuwei,
   addData,
   addSubmit,
+  updateListStatus,
 } from "@/api/kuweiguanli";
 // import login from "@/store/modules/login";
 
@@ -365,10 +366,17 @@ export default {
 
     // 提交
     async submit() {
-      const { data } = await addSubmit(this.editList);
-      console.log(data, "新增的提交");
-      this.$message.success("新增成功");
-      this.$router.back();
+      if (this.$route.query.id) {
+        const { data } = await updateListStatus(this.editList);
+        this.editList = data.data;
+        this.$message.success("编辑成功");
+        this.$router.back();
+      } else {
+        const { data } = await addSubmit(this.editList);
+        console.log(data, "新增的提交");
+        this.$message.success("新增成功");
+        this.$router.back();
+      }
     },
   },
 };
