@@ -72,6 +72,9 @@
           ]"
           :filter-method="filterHandler"
         >
+          <template v-slot="{ row }">
+            {{ statusSelect[row.status] }}
+          </template>
         </el-table-column>
         <el-table-column prop="handoverName" label="交接员" width="160">
         </el-table-column>
@@ -154,20 +157,11 @@ export default {
       currentPage4: 1,
 
       // 交接状态
-      statusSelect: [
-        {
-          value: "1",
-          label: "新建",
-        },
-        {
-          value: "2",
-          label: "交接中",
-        },
-        {
-          value: "3",
-          label: "交接完成",
-        },
-      ],
+      statusSelect: {
+        1: "新建",
+        2: "交接中",
+        3: "交接完成",
+      },
 
       // 搜索-交接编号
       inputNumber: "",
@@ -201,7 +195,6 @@ export default {
       const { data } = await getTaskList({
         size: this.pageSize,
         current: this.currentPage4,
-        status: this.statusSelect,
         code: this.inputNumber,
         outboundCode: this.inputCodeNumber,
         carrierName: this.inputShang,
@@ -209,11 +202,13 @@ export default {
       this.taskList = data.data.records;
       this.total = +data.data.total;
     },
+
     // 交接状态-下拉框
     filterHandler(value, row, column) {
       const property = column["property"];
-      return row[property] === value;
+      return row[property] == value;
     },
+
     // 分配弹窗
     handleClose(done) {
       this.$confirm("确认关闭？")
