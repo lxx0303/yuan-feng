@@ -99,6 +99,13 @@ const routes = [
           },
         ],
       },
+      // 商务管理-货主管理-编辑
+      {
+        path: "/huozhuedit",
+        name: "huozhuedit",
+        component: () => import("@/views/Shangwu/components/edit-huozhu.vue"),
+      },
+
       // 库内管理
       {
         path: "/kunei",
