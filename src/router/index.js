@@ -90,7 +90,14 @@ const routes = [
         path: "/shangwu",
         name: "shangwu",
         component: () => import("@/views/Shangwu"),
-        redirect: "",
+        redirect: "/huozhumanage",
+        children: [
+          {
+            path: "/huozhumanage",
+            name: "huozhumanage",
+            component: () => import("@/views/Shangwu/huozhuManage"),
+          },
+        ],
       },
       // 库内管理
       {

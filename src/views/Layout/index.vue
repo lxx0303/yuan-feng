@@ -43,7 +43,7 @@
               <span slot="title">商务管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/shangwu">货主管理</el-menu-item>
+              <el-menu-item index="/huozhumanage">货主管理</el-menu-item>
               <el-menu-item index="1-2">承接商管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
