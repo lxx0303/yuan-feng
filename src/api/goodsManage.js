@@ -24,3 +24,12 @@ export function editCurrentKuquInfo(params) {
     params,
   });
 }
+
+// 获取货主数据
+export function editCurrentPersonName(params) {
+  return request({
+    url: "/owner/vague",
+    method: "get",
+    params,
+  });
+}

@@ -120,9 +120,9 @@
               </el-form-item>
             </el-col>
             <el-col :span="6">
-              <el-form-item label="指定库区">
+              <el-form-item label="指定库区" prop="useType">
                 <el-select
-                  v-model="editList.useType"
+                  v-model="kuquList.name"
                   placeholder="请选择指定库区"
                   style="width: 280px"
                 >
@@ -176,7 +176,11 @@
 
 <script>
 import Header from "@/compoents/Header.vue";
-import { editCurrentInfo, editCurrentKuquInfo } from "@/api/goodsManage";
+import {
+  editCurrentInfo,
+  editCurrentKuquInfo,
+  editCurrentPersonName,
+} from "@/api/goodsManage";
 
 export default {
   compoents: { Header },
@@ -193,11 +197,10 @@ export default {
         price: "",
         unit: "",
         guaranteeDay: "",
-      },
-      // 库区数据
-      kuquList: {
         useType: "",
       },
+      // 库区数据
+      kuquList: {},
 
       rules: {
         code: [{ required: true, message: "请输入货品编码", trigger: "blur" }],
@@ -284,11 +287,15 @@ export default {
           label: "质检区",
         },
       ],
+      // 货主数据
+      params: "",
+      personList: [],
     };
   },
   created() {
     this.onEditCurrentInfo();
     this.onEditKuquInfo();
+    this.onPersonName();
   },
   methods: {
     back() {
@@ -303,12 +310,16 @@ export default {
     },
     // 当前页面库区数据
     async onEditKuquInfo() {
-      console.log(this.$route.query.ownerId, "111");
       const { data } = await editCurrentKuquInfo({
         ownerId: this.$route.query.ownerId,
       });
       this.kuquList = data.data;
       console.log(this.kuquList, "库区");
+    },
+    // 当前页面货主的数据
+    async onPersonName() {
+      const { data } = await editCurrentPersonName({ params: this.params });
+      this.personList = data.data;
     },
   },
 };
